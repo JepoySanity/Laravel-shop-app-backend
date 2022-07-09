@@ -71,7 +71,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingItem = Product::find($id);
+        
+        if ($existingItem) {
+            $existingItem->update($request->all());
+            return $existingItem;
+        }
+
+        return "Product not found";
     }
 
     /**
