@@ -36,12 +36,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $newProduct = new Product;
-        $newProduct->product_name = $request->product_name;
-        $newProduct->product_details = $request->product_details;
-        $newProduct->save();
-        
-        return $newProduct;
+        return Product::create($request->all());
     }
 
     /**
