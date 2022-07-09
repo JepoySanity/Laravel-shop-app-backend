@@ -75,7 +75,7 @@ class ProductController extends Controller
         
         if ($existingItem) {
             $existingItem->update($request->all());
-            return $existingItem;
+            return $existingItem->product_name.' successfully updated';  
         }
 
         return "Product not found";
@@ -89,6 +89,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $existingItem = Product::find($id);
+        if ($existingItem) {
+           $existingItem->delete();
+           return $existingItem->product_name.' successfully deleted';     
+        }
+
+        return "Product not found";
     }
 }
