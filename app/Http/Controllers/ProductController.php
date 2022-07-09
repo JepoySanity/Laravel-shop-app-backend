@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,8 +13,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $products = json_encode(Product::all(),JSON_PRETTY_PRINT);
+        return $products;
     }
 
     /**
@@ -45,7 +47,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = json_encode(Product::find($id),JSON_PRETTY_PRINT);
+        return $product;
     }
 
     /**

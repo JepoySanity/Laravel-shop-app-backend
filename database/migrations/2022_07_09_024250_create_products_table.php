@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('product_name');
             $table->string('product_details');
-            $table->integer('product_category');
-            $table->string('product_image');
-            $table->decimal('product_price', 8, 2);
+            $table->integer('product_category')->nullable();
+            $table->string('product_image')->nullable();
+            $table->decimal('product_price', 8, 2)->default(0);
             $table->boolean('enabled')->default(false);
             $table->timestamps();
         });
